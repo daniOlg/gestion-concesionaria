@@ -1,24 +1,28 @@
 package gestion;
 
 import vehiculos.*;
+import ventas.Venta;
 
+import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Gestor {
-    GestorVehiculos gestorVehiculos; // instancia de la concesionaria pasada por parametros
+    GestorVehiculos gestorVehiculos;    // instancia pasada por parametros
+    GestorVentas gestorVentas;          // instancia pasada por parametros
 
     // Singleton gestor
     private static Gestor instaciaGestor;
 
-    private Gestor(GestorVehiculos gestorVehiculos) {
+    private Gestor(GestorVehiculos gestorVehiculos, GestorVentas gestorVentas) {
         this.gestorVehiculos = gestorVehiculos;
+        this.gestorVentas = gestorVentas;
     }
 
-    public static Gestor nuevoGestor(GestorVehiculos gestorVehiculos) {
+    public static Gestor nuevoGestor(GestorVehiculos gestorVehiculos, GestorVentas gestorVentas) {
         // si no existe la instncia crea una
         if (instaciaGestor == null)
-            instaciaGestor = new Gestor(gestorVehiculos);
+            instaciaGestor = new Gestor(gestorVehiculos, gestorVentas);
 
         // retorna la instancia, ya sea la nueva (si no existia) o la existente
         return instaciaGestor;
@@ -33,7 +37,8 @@ public class Gestor {
                 LISTAR_VENDIDOS = 6,
                 LISTAR_POR_TIPO = 7,
                 MODIFICAR_VEHICULO = 8,
-                SALIR = 9;
+                LISTAR_VENTAS = 9,
+                SALIR = 0;
 
         // loop infinito con opciones para el usuario
         while(true) {
@@ -48,7 +53,8 @@ public class Gestor {
             System.out.println("6. Listar vehiculos vendidos");
             System.out.println("7. Listar vehiculos por tipo");
             System.out.println("8. Modificar un vehiculo (codigo)");
-            System.out.println("9. Salir");
+            System.out.println("9. Listar ventas realizadas");
+            System.out.println("0. Salir");
             System.out.println();
 
             // inicializar scanner
@@ -66,6 +72,7 @@ public class Gestor {
                     case LISTAR_VENDIDOS -> listarVendidos();
                     case LISTAR_POR_TIPO -> listarPorTipo();
                     case MODIFICAR_VEHICULO -> modificarVehiculo();
+                    case LISTAR_VENTAS -> listarVentas();
                     case SALIR -> System.exit(0);
                 }
             } catch (InputMismatchException e) {
@@ -76,22 +83,10 @@ public class Gestor {
     }
 
     void venderVehiculo() {
-        Scanner scanner = new Scanner(System.in);
+        Venta venta = crearVenta(); // creamos venta del vehiculo
 
-        // ingreso codigo vehiculo a modificar
-        int codigo;
-        while (true) {
-            try {
-                System.out.print("Codigo del vehiculo: ");
-                codigo = scanner.nextInt();
-                break;
-            } catch (InputMismatchException e) {
-                System.out.println("Error: Ingrese los datos solicitados...");
-                scanner.nextLine();
-            }
-        }
-
-        gestorVehiculos.venderVehiculo(codigo);
+        gestorVentas.crearVenta(venta);
+        gestorVehiculos.venderVehiculo(venta.getCodigo());
     }
 
     void agregarVehiculo() {
@@ -200,6 +195,10 @@ public class Gestor {
         gestorVehiculos.modificarVehiculo(codigo, modificado);
     }
 
+    void listarVentas() {
+        gestorVentas.listarVentas();
+    }
+
     Vehiculo crearVehiculo() {
 
         int tipo;
@@ -262,5 +261,51 @@ public class Gestor {
             case 3 -> new Motocicleta(marca, modelo, fabricado, kilometraje, patente);
             default -> new Auto(marca, modelo, fabricado, kilometraje, patente);
         };
+    }
+
+    Venta crearVenta() {
+        float monto;
+        Date fecha = new Date(); // establecer fecha actual
+        int codigo;
+        String nombreComprador;
+        String apellidoComprador;
+        String rut;
+
+        while (true) {
+            try {
+                Scanner scanner = new Scanner(System.in);
+
+                System.out.println("Por favor proporcione los siguientes datos:");
+
+                // monto
+                System.out.print("Monto: ");
+                monto = scanner.nextFloat();
+
+                // codigo
+                System.out.print("Codigo vehiculo: ");
+                codigo = scanner.nextInt();
+                scanner.nextLine();
+
+                // nombreComprador
+                System.out.print("Nombre comprador: ");
+                nombreComprador = scanner.nextLine();
+
+                // apellidoComprador
+                System.out.print("Apellido comprador: ");
+                apellidoComprador = scanner.nextLine();
+
+                // rut
+                System.out.print("Rut: ");
+                rut = scanner.nextLine();
+
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("\nError, por favor ingrese los datos solicitados...\n");
+            }
+        }
+
+        // TODO: checar si existe el vehiculo por codigo
+
+        return new Venta(monto, fecha, codigo, nombreComprador, apellidoComprador, rut);
     }
 }
