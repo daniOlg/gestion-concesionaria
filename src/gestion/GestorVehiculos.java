@@ -17,7 +17,7 @@ public class GestorVehiculos {
     // Singleton
     private static GestorVehiculos instaciaGestorVehiculos;
     private GestorVehiculos() {}
-    public static GestorVehiculos nuevaConcesionaria() {
+    public static GestorVehiculos nuevoGestorVehiculos() {
         // si no existe la instncia crea una
         if (instaciaGestorVehiculos == null)
             instaciaGestorVehiculos = new GestorVehiculos();
