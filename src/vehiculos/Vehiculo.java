@@ -13,4 +13,10 @@ public abstract class Vehiculo {
     public abstract void setCodigo(int codigo);
 
     public abstract int getCodigo();
+
+    public abstract int getFabricado();
+    public abstract TipoVehiculo getTipo();
+    public abstract String getPatente();
+
+    public abstract String getDatosCreacion();
 }
