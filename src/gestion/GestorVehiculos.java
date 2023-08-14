@@ -1,12 +1,11 @@
 package gestion;
 
-import com.sun.source.tree.Tree;
 import utils.Utils;
 import vehiculos.*;
 
 import java.util.*;
 
-public class Concesionaria {
+public class GestorVehiculos {
     // usamos treemap para mapear por fecha asi listar siempre ordenado por fecha
     private TreeMap<Integer, Vehiculo> disponibles = new TreeMap<>();
     private TreeMap<Integer, Vehiculo> vendidos = new TreeMap<>();
@@ -16,15 +15,15 @@ public class Concesionaria {
 
 
     // Singleton
-    private static Concesionaria instaciaConcesionaria;
-    private Concesionaria() {}
-    public static Concesionaria nuevaConcesionaria() {
+    private static GestorVehiculos instaciaGestorVehiculos;
+    private GestorVehiculos() {}
+    public static GestorVehiculos nuevaConcesionaria() {
         // si no existe la instncia crea una
-        if (instaciaConcesionaria == null)
-            instaciaConcesionaria = new Concesionaria();
+        if (instaciaGestorVehiculos == null)
+            instaciaGestorVehiculos = new GestorVehiculos();
 
         // retorna la instancia, ya sea la nueva (si no existia) o la existente
-        return instaciaConcesionaria;
+        return instaciaGestorVehiculos;
     }
 
 

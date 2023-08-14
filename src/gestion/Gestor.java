@@ -6,19 +6,19 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Gestor {
-    Concesionaria concesionaria; // instancia de la concesionaria pasada por parametros
+    GestorVehiculos gestorVehiculos; // instancia de la concesionaria pasada por parametros
 
     // Singleton gestor
     private static Gestor instaciaGestor;
 
-    private Gestor(Concesionaria concesionaria) {
-        this.concesionaria = concesionaria;
+    private Gestor(GestorVehiculos gestorVehiculos) {
+        this.gestorVehiculos = gestorVehiculos;
     }
 
-    public static Gestor nuevoGestor(Concesionaria concesionaria) {
+    public static Gestor nuevoGestor(GestorVehiculos gestorVehiculos) {
         // si no existe la instncia crea una
         if (instaciaGestor == null)
-            instaciaGestor = new Gestor(concesionaria);
+            instaciaGestor = new Gestor(gestorVehiculos);
 
         // retorna la instancia, ya sea la nueva (si no existia) o la existente
         return instaciaGestor;
@@ -91,14 +91,14 @@ public class Gestor {
             }
         }
 
-        concesionaria.venderVehiculo(codigo);
+        gestorVehiculos.venderVehiculo(codigo);
     }
 
     void agregarVehiculo() {
         Vehiculo vehiculoCreado = crearVehiculo();
 
         // agrega el vehiculo creado
-        concesionaria.agregarVehiculo(vehiculoCreado);
+        gestorVehiculos.agregarVehiculo(vehiculoCreado);
     }
 
     void buscarPorCodigo() {
@@ -117,7 +117,7 @@ public class Gestor {
             }
         }
 
-        concesionaria.buscarPorCodigo(codigo);
+        gestorVehiculos.buscarPorCodigo(codigo);
     }
 
     void buscarPorPatente() {
@@ -136,15 +136,15 @@ public class Gestor {
             }
         }
 
-        concesionaria.buscarPorPatente(patente);
+        gestorVehiculos.buscarPorPatente(patente);
     }
 
     void listarDisponibles() {
-        concesionaria.listarDisponibles();
+        gestorVehiculos.listarDisponibles();
     }
 
     void listarVendidos() {
-        concesionaria.listarVendidos();
+        gestorVehiculos.listarVendidos();
     }
 
     void listarPorTipo() {
@@ -174,7 +174,7 @@ public class Gestor {
             default -> TipoVehiculo.AUTO;
         };
 
-        concesionaria.listarPorTipo(tipo);
+        gestorVehiculos.listarPorTipo(tipo);
     }
 
     void modificarVehiculo() {
@@ -197,7 +197,7 @@ public class Gestor {
         Vehiculo modificado = crearVehiculo();
 
         // llamar metodo para modificar vehiculo en concesionaria
-        concesionaria.modificarVehiculo(codigo, modificado);
+        gestorVehiculos.modificarVehiculo(codigo, modificado);
     }
 
     Vehiculo crearVehiculo() {

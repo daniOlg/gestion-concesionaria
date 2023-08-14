@@ -1,11 +1,8 @@
-import gestion.Concesionaria;
+import gestion.GestorVehiculos;
 import gestion.Gestor;
 import vehiculos.Auto;
 import vehiculos.Camioneta;
 import vehiculos.Motocicleta;
-
-import java.util.Map;
-import java.util.TreeMap;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,17 +16,17 @@ public class Main {
         Motocicleta motocicleta1 = new Motocicleta("HARLEY-DAVIDSON", "SPORTSTER", 2022, 3676, "DF124");
 
         // crear instancias
-        Concesionaria concesionaria = Concesionaria.nuevaConcesionaria();  // creamos singleton concesionaria
-        Gestor gestor = Gestor.nuevoGestor(concesionaria); // agregamos concesionaria a singleton gestor
+        GestorVehiculos gestorVehiculos = GestorVehiculos.nuevaConcesionaria();  // creamos singleton concesionaria
+        Gestor gestor = Gestor.nuevoGestor(gestorVehiculos); // agregamos concesionaria a singleton gestor
 
         // vehiculos de ejemplo de la concesionaria
         System.out.println("------------- Vehiculos de prueba -------------");
-        concesionaria.agregarVehiculo(camioneta);
-        concesionaria.agregarVehiculo(motocicleta);
-        concesionaria.agregarVehiculo(auto);
-        concesionaria.agregarVehiculo(camioneta1);
-        concesionaria.agregarVehiculo(motocicleta1);
-        concesionaria.agregarVehiculo(auto1);
+        gestorVehiculos.agregarVehiculo(camioneta);
+        gestorVehiculos.agregarVehiculo(motocicleta);
+        gestorVehiculos.agregarVehiculo(auto);
+        gestorVehiculos.agregarVehiculo(camioneta1);
+        gestorVehiculos.agregarVehiculo(motocicleta1);
+        gestorVehiculos.agregarVehiculo(auto1);
         System.out.println("------------------------------");
 
         // iniciar programa usuario
