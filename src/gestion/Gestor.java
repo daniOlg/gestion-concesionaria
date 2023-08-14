@@ -48,10 +48,11 @@ public class Gestor {
             System.out.println("6. Listar vehiculos vendidos");
             System.out.println("7. Listar vehiculos por tipo");
             System.out.println("8. Modificar un vehiculo (codigo)");
-            System.out.println();
             System.out.println("9. Salir");
+            System.out.println();
 
             // inicializar scanner
+            System.out.print("Opcion: ");
             Scanner scanner = new Scanner(System.in);
 
             // usar funcion que seleccione el usuario
