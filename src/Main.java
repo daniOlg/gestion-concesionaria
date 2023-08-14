@@ -1,5 +1,6 @@
 import gestion.GestorVehiculos;
 import gestion.Gestor;
+import gestion.GestorVentas;
 import vehiculos.Auto;
 import vehiculos.Camioneta;
 import vehiculos.Motocicleta;
@@ -16,8 +17,9 @@ public class Main {
         Motocicleta motocicleta1 = new Motocicleta("HARLEY-DAVIDSON", "SPORTSTER", 2022, 3676, "DF124");
 
         // crear instancias
-        GestorVehiculos gestorVehiculos = GestorVehiculos.nuevaConcesionaria();  // creamos singleton concesionaria
-        Gestor gestor = Gestor.nuevoGestor(gestorVehiculos); // agregamos concesionaria a singleton gestor
+        GestorVehiculos gestorVehiculos = GestorVehiculos.nuevoGestorVehiculos();  // creamos singleton vehiculos
+        GestorVentas gestorVentas = GestorVentas.nuevoGestorVentas();  // creamos singleton ventas
+        Gestor gestor = Gestor.nuevoGestor(gestorVehiculos, gestorVentas); // agregamos gestores a singleton gestor
 
         // vehiculos de ejemplo de la concesionaria
         System.out.println("------------- Vehiculos de prueba -------------");

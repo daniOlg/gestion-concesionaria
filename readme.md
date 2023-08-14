@@ -1,7 +1,7 @@
 ### Instrucciones 1
 - Los vehículos se clasifican en: autos, camionetas y motocicletas.
 - Todos los vehículos tienen código único, su marca, tipo (auto, camioneta, etc.), modelo (nombre del modelo), año, kilometraje y patente. 
-- La concesionaria lleva un registro de las ventas realizadas, cada registro considera la siguiente información: monto de venta, fecha de la transacción, vehículo vendido (código), nombre y apellido del comprador, así como su rut.
+- La gestorVehiculos lleva un registro de las ventas realizadas, cada registro considera la siguiente información: monto de venta, fecha de la transacción, vehículo vendido (código), nombre y apellido del comprador, así como su rut.
 - Utilice clases, sobrecarga y por último, incluya el control de excepciones try-catch de acuerdo a lo aprendido durante la unidad.
 
 ### Instrucciones 2
@@ -15,15 +15,18 @@
 - `vehiculo` > `auto`
 - `vehiculo` > `camioneta`
 - `vehiculo` > `motocicleta`
+<br><br>
 
 ### Venta
 - `venta` > [ monto, fecha, código vehiculo, nombre, apellido, rut ]
+<br><br>
 
 ### Listar vehiculos
-- `ArrayList<Vehiculo> disponibles`
-- `ArrayList<Vehiculo> vendidos`
+- `TreeMap<Integer, Vehiculo> disponibles`
+- `TreeMap<Integer, Vehiculo> vendidos`
+<br><br>
 
-TODO:
+#### PLAN:
 - al crear un vehiculo se añade a la lista de vehiculos disponibles
 - al vender un vehiculo de la lista de vehiculos disponibles debe quedar en la lista de vehiculos vendidos
 - crear un hashset para almacenar los codigos usados
