@@ -3,12 +3,10 @@ package gestion;
 import utils.Utils;
 import vehiculos.*;
 
-import java.lang.invoke.VarHandle;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Scanner;
 
-public class GestorGeneral {
+public class GestorVehiculos {
     private ArrayList<Vehiculo> disponibles = new ArrayList<>();
     private ArrayList<Vehiculo> vendidos = new ArrayList<>();
     private HashSet<Integer> codigos = new HashSet<>();
@@ -122,105 +120,5 @@ public class GestorGeneral {
 
         // si no lo encuentra retorna null
         return null;
-    }
-
-    public void iniciarPrograma() {
-        final int VENDER_VEHICULO = 1,
-                AGREGAR_VEHICULO = 2,
-                MOSTRAR_INFO = 3,
-                LISTAR_DISPONIBLES = 4,
-                LISTAR_VENDIDOS = 5,
-                MODIFICAR_VEHICULO = 6,
-                SALIR = 7;
-
-        while(true) {
-            System.out.println("-- Gestion Concesionaria Automotriz --");
-            System.out.println("Que desea hacer?:");
-            System.out.println("1. Vender un vehiculo");
-            System.out.println("2. Agregar un vehiculo");
-            System.out.println("3. Mostrar informacion de un vehiculo");
-            System.out.println("4. Listar vehiculos disponibles");
-            System.out.println("5. Listar vehiculos vendidos");
-            System.out.println("6. Modificar un vehiculo");
-
-            System.out.println("7. Salir");
-
-            // inicializar scanner
-            Scanner scanner = new Scanner(System.in);
-
-            // usar funcion que seleccione el usuario
-            switch(scanner.nextInt()) {
-                case VENDER_VEHICULO -> opcionVenderVehiculo();
-                case AGREGAR_VEHICULO -> opcionAgregarVehiculo();
-                case MOSTRAR_INFO -> opcionMostrarInfo();
-                case LISTAR_DISPONIBLES -> opcionListarDisponibles();
-                case LISTAR_VENDIDOS -> opcionListarVendidos();
-                case MODIFICAR_VEHICULO -> opcionModificarVehiculo();
-                case SALIR -> System.exit(0);
-            }
-        }
-    }
-
-    void opcionVenderVehiculo() {
-        Scanner scanner = new Scanner(System.in);
-        int codigo = scanner.nextInt();
-        venderVehiculo(codigo);
-    }
-
-    void opcionAgregarVehiculo() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Por favor proporcione los siguientes datos:");
-
-        System.out.print("Marca: ");
-        String marca = scanner.nextLine();
-
-        System.out.print("Modelo: ");
-        String modelo = scanner.nextLine();
-
-        System.out.print("Año: ");
-        int fabricado = scanner.nextInt();
-
-        System.out.print("Kilometraje: ");
-        int kilometraje = scanner.nextInt();
-
-        System.out.print("Patente: ");
-        String patente = scanner.nextLine();
-
-        System.out.println("Seleccione el tipo de vehiculo:");
-        System.out.println("1. Auto");
-        System.out.println("2. Camioneta");
-        System.out.println("3. Motocicleta");
-
-        TipoVehiculo tipoVehiculo = switch (scanner.nextInt()) {
-            case 2 -> TipoVehiculo.CAMIONETA;
-            case 3 -> TipoVehiculo.MOTOCICLETA;
-            default -> TipoVehiculo.AUTO;
-        };
-
-        // TODO: Crear patron factory
-
-        // segun el tipo de vehiculo instancia la clase indicada
-        if(tipoVehiculo == TipoVehiculo.AUTO)
-            agregarVehiculo(new Auto(marca, modelo, fabricado, kilometraje, patente));
-        if(tipoVehiculo == TipoVehiculo.CAMIONETA)
-            agregarVehiculo(new Camioneta(marca, modelo, fabricado, kilometraje, patente));
-        if(tipoVehiculo == TipoVehiculo.MOTOCICLETA)
-            agregarVehiculo(new Motocicleta(marca, modelo, fabricado, kilometraje, patente));
-    }
-
-    void opcionMostrarInfo() {
-
-    }
-
-    void opcionListarDisponibles() {
-        listarDisponibles();
-    }
-
-    void opcionListarVendidos() {
-
-    }
-
-    void opcionModificarVehiculo() {
-
     }
 }

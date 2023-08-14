@@ -7,6 +7,7 @@ public class Auto extends Vehiculo {
     private int fabricado;
     private int kilometraje;
     private String patente;
+    private TipoVehiculo tipo = TipoVehiculo.AUTO;
 
     public Auto(String marca, String modelo, int fabricado, int kilometraje, String patente) {
         this.marca = marca;
@@ -18,13 +19,13 @@ public class Auto extends Vehiculo {
 
     @Override
     public String toString() {
-        return "- Codigo: " + this.codigo+
-                "\n- Marca: " + this.marca +
-                "\n- Tipo: Auto" +
-                "\n- Modelo: " + this.modelo +
-                "\n- Año: " + this.fabricado +
-                "\n- Kilometraje: " + this.kilometraje +
-                "\n- Patente: " + this.patente;
+        return "\t- Codigo: " + this.codigo+
+                "\n\t- Marca: " + this.marca +
+                "\n\t- Tipo: Auto" +
+                "\n\t- Modelo: " + this.modelo +
+                "\n\t- Año: " + this.fabricado +
+                "\n\t- Kilometraje: " + this.kilometraje +
+                "\n\t- Patente: " + this.patente;
     }
 
     @Override
@@ -35,5 +36,17 @@ public class Auto extends Vehiculo {
     @Override
     public int getCodigo() {
         return this.codigo;
+    }
+    public int getFabricado() {
+        return this.fabricado;
+    };
+    public TipoVehiculo getTipo() {
+        return this.tipo;
+    }
+    public String getPatente() {
+        return this.patente;
+    }
+    public String getDatosCreacion() {
+        return "- Codigo: " + this.codigo + ", Marca: " + this.marca + ", Patente: " + this.patente;
     }
 }
