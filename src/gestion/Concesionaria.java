@@ -102,7 +102,7 @@ public class Concesionaria {
         disponibles.remove(vehiculo.getFabricado()); // si existe lo elimina de los disponibles
         vendidos.put(vehiculo.getFabricado(), vehiculo); // y lo añade a la lista de vendidos
 
-        System.out.println("Vehiculo codigo: " + vehiculo.getCodigo() + " vendido con exito");
+        System.out.println("Vehiculo codigo #" + vehiculo.getCodigo() + " vendido con exito");
     }
 
     // modificar un vehículo ya creado
