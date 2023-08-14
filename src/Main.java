@@ -9,12 +9,14 @@ import java.util.TreeMap;
 
 public class Main {
     public static void main(String[] args) {
-        Camioneta camioneta = new Camioneta("MAZDA", "CX3", 2020, 231421, "SH23IJ");
-        Motocicleta motocicleta = new Motocicleta("YAMAHA", "YTZ", 2019, 9200, "KF123");
-        Auto auto = new Auto("PEUGEOT", "307", 2001, 300142, "ABC123");
-        Camioneta camioneta1 = new Camioneta("CAMIO123", "AB1", 2006, 231421, "ABCC12");
-        Motocicleta motocicleta1 = new Motocicleta("MOTO123", "AC2", 2003, 9200, "AC234");
-        Auto auto1 = new Auto("AU123", "AD3", 2008, 300142, "AAABBB");
+        Camioneta camioneta1 = new Camioneta("TOYOTA", "HILUX", 2023, 9200, "FJKL01");
+        Camioneta camioneta = new Camioneta("MAZDA", "CX3", 2007, 231421, "SH23IJ");
+
+        Auto auto = new Auto("PEUGEOT", "306", 2001, 300142, "AB12CD");
+        Auto auto1 = new Auto("FORD", "MUSTANG SHELBY GT500", 2016, 120322, "HK14XF");
+
+        Motocicleta motocicleta = new Motocicleta("YAMAHA", "YTZ", 2011, 123001, "KF123");
+        Motocicleta motocicleta1 = new Motocicleta("HARLEY-DAVIDSON", "SPORTSTER", 2022, 3676, "DF124");
 
         // crear instancias
         Concesionaria concesionaria = Concesionaria.nuevaConcesionaria();  // creamos singleton concesionaria
