@@ -55,17 +55,22 @@ public class Gestor {
             System.out.print("Opcion: ");
             Scanner scanner = new Scanner(System.in);
 
-            // usar funcion que seleccione el usuario
-            switch(scanner.nextInt()) {
-                case VENDER_VEHICULO -> venderVehiculo();
-                case AGREGAR_VEHICULO -> agregarVehiculo();
-                case BUSCAR_POR_CODIGO -> buscarPorCodigo();
-                case BUSCAR_POR_PATENTE -> buscarPorPatente();
-                case LISTAR_DISPONIBLES -> listarDisponibles();
-                case LISTAR_VENDIDOS -> listarVendidos();
-                case LISTAR_POR_TIPO -> listarPorTipo();
-                case MODIFICAR_VEHICULO -> modificarVehiculo();
-                case SALIR -> System.exit(0);
+            try {
+                // usar funcion que seleccione el usuario
+                switch(scanner.nextInt()) {
+                    case VENDER_VEHICULO -> venderVehiculo();
+                    case AGREGAR_VEHICULO -> agregarVehiculo();
+                    case BUSCAR_POR_CODIGO -> buscarPorCodigo();
+                    case BUSCAR_POR_PATENTE -> buscarPorPatente();
+                    case LISTAR_DISPONIBLES -> listarDisponibles();
+                    case LISTAR_VENDIDOS -> listarVendidos();
+                    case LISTAR_POR_TIPO -> listarPorTipo();
+                    case MODIFICAR_VEHICULO -> modificarVehiculo();
+                    case SALIR -> System.exit(0);
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Error: Ingrese una de las opciones disponibles...");
+                scanner.nextLine();
             }
         }
     }
